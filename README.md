@@ -24,3 +24,5 @@ pre-commit install
 ## Contents
 
 The files are not intended to be ran as packages. Rather, they are the codes I wrote on platforms such as leetcode.com, hackerrank.com, etc. to solve various problems. Each file is named after the problem it solves. Also, each file contains a docstring at the top explaining the problem it solves, and the time/space complexity of the solution.
+
+You can find me on LeetCode as [andreiroibu94](https://leetcode.com/u/andreiroibu94/).

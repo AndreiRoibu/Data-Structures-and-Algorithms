@@ -140,6 +140,20 @@ def combine(arr1, arr2):
 
 Like in the previous two examples, this algorithm has a time complexity of O(n) and uses O(1) space (if we don't count the output as extra space, which we usually don't).
 
-Example 4: 392. Is Subsequence.
+Example 4: 392. Is Subsequence - Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
 
+```python
 
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        i = j = 0
+        while i < len(s) and j < len(t):
+            if s[i] == t[j]:
+                i += 1
+            j += 1
+
+        return i == len(s)
+
+```
+
+Just like all the prior examples, this solution uses O(1) space. The time complexity is linear with the lengths of s and t.

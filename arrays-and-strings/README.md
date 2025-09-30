@@ -320,3 +320,79 @@ def find_best_subarray(nums, k):
 
     return ans
 ```
+
+# Prefix Sum
+
+The idea is to create an array prefix where prefix[i] is the sum of all elements up to the index i (inclusive). For example, given nums = [5, 2, 1, 6, 3, 8], we would have prefix = [5, 7, 8, 14, 17, 25].
+
+> When a subarray starts at index 0, it is considered a "prefix" of the array. A prefix sum represents the sum of all prefixes.
+
+Prefix sums allow us to find the sum of any subarray in O(1). If we want the sum of the subarray from i to j (inclusive), then the answer is prefix[j] - prefix[i - 1], or alternatively prefix[j] - prefix[i] + nums[i] if you don't want to deal with the out of bounds case when i = 0.
+
+Building a prefix sum is very simple. Here's some pseudocode:
+
+```
+Given an array nums,
+
+prefix = [nums[0]]
+for (int i = 1; i < nums.length; i++)
+    prefix.append(nums[i] + prefix[prefix.length - 1])
+```
+
+A prefix sum is a great tool whenever a problem involves sums of a subarray. It only costs O(n) to build but allows all future subarray queries to be O(1), so it can usually improve an algorithm's time complexity by a factor of O(n), where n is the length of the array. Let's look at some examples.
+
+Example 1: Example 1: Given an integer array nums, an array queries where queries[i] = [x, y] and an integer limit, return a boolean array that represents the answer to each query. A query is true if the sum of the subarray from x to y is less than limit, or false otherwise. For example, given nums = [1, 6, 3, 2, 7, 2], queries = [[0, 3], [2, 5], [2, 4]], and limit = 13, the answer is [true, false, true]. For each query, the subarray sums are [12, 14, 12].
+
+```python
+def answer_queries(nums, queries, limit):
+    prefix = [nums[0]]
+    for i in range(1, len(nums)):
+        prefix.append(nums[i] + prefix[-1])
+
+    ans = []
+    for x, y in queries:
+        curr = prefix[y] - prefix[x] + nums[x]
+        ans.append(curr < limit)
+
+    return ans
+```
+
+With the prefix sum, it costs O(n) to build, but then answering each query is O(1). This gives a much better time complexity of O(n+m). We use O(n) space to build the prefix sum.
+
+Example 2 - 2270: Number of ways to split array: Given an integer array nums, find the number of ways to split the array into two parts so that the first section has a sum greater than or equal to the sum of the second section. The second section should have at least one number.
+
+```python
+class Solution:
+    def waysToSplitArray(self, nums: List[int]) -> int:
+        n = len(nums)
+
+        prefix = [nums[0]]
+        for i in range(1, n):
+            prefix.append(nums[i] + prefix[-1])
+
+        ans = 0
+        for i in range(n - 1):
+            left_section = prefix[i]
+            right_section = prefix[-1] - prefix[i]
+            if left_section >= right_section:
+                ans += 1
+
+        return ans
+```
+
+We can also do it without a prefix array:
+
+```python
+class Solution2:
+    def waysToSplitArray(self, nums: list[int]) -> int:
+        ans = left_section = 0
+        total = sum(nums)
+
+        for i in range(len(nums) - 1):
+            left_section += nums[i]
+            right_section = total - left_section
+            if left_section >= right_section:
+                ans += 1
+
+        return ans
+```

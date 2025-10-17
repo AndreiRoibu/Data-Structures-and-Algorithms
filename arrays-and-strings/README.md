@@ -1,23 +1,10 @@
 # Common Techniques and Patterns
 
-<!-- vscode-markdown-toc -->
-* 1. [Two Pointers](#TwoPointers)
-	* 1.1. [Pointers at the Edges](#PointersattheEdges)
-	* 1.2. [Move along both inputs simultaneously until all elements have been checked](#Movealongbothinputssimultaneouslyuntilallelementshavebeenchecked)
-* 2. [Sliding Window](#SlidingWindow)
-	* 2.1. [Subarrays](#Subarrays)
-	* 2.2. [Using Sliding Window](#UsingSlidingWindow)
-	* 2.3. [Implementation Examples](#ImplementationExamples)
-* 3. [Prefix Sum](#PrefixSum)
-* 4. [O(n) String Building.](#OnStringBuilding)
-* 5. [Subarrays/substrings, subsequences, and subsets](#Subarrayssubstringssubsequencesandsubsets)
-<!-- vscode-markdown-toc -->
-
-##  1. <a name='TwoPointers'></a>Two Pointers
+##  1. Two Pointers
 
 Two pointers is an extremely common technique used to solve array and string problems. It involves having two integer variables that both move along an iterable. This means we will have two integers, usually named something like `i` and `j`, or `left` and `right` which each represent an index of the array or string.
 
-###  1.1. <a name='PointersattheEdges'></a>Pointers at the Edges
+###  1.1. Pointers at the Edges
 
 Start the pointers at the edges of the input. Move them towards each other until they meet.
 
@@ -81,7 +68,7 @@ def check_for_target(nums, target):
 
 The reason this algorithm works: because the numbers are sorted, moving the left pointer permanently increases the value the left pointer points to (nums[left] = x). Similarly, moving the right pointer permanently decreases the value the right pointer points to (nums[right] = y). If we have x + y > target, then we can never have a solution with y because x can only increase. So if a solution exists, we can only find it by decreasing y. The same logic can be applied to x if x + y < target.
 
-###  1.2. <a name='Movealongbothinputssimultaneouslyuntilallelementshavebeenchecked'></a>Move along both inputs simultaneously until all elements have been checked
+###  1.2. Move along both inputs simultaneously until all elements have been checked
 
 Converting this idea into instructions:
 
@@ -160,11 +147,11 @@ class Solution:
 
 Just like all the prior examples, this solution uses O(1) space. The time complexity is linear with the lengths of s and t.
 
-##  2. <a name='SlidingWindow'></a>Sliding Window
+##  2. Sliding Window
 
 Like two pointers, sliding windows work the same with arrays and strings - the important thing is that they're iterables with ordered elements. A sliding window is actually implemented using two pointers!
 
-###  2.1. <a name='Subarrays'></a>Subarrays
+###  2.1. Subarrays
 
 Given an array, a subarray is a contiguous section of the array. All the elements must be adjacent to each other in the original array and in their original order. For example, with the array [1, 2, 3, 4], the subarrays (grouped by length) are:
 
@@ -179,7 +166,7 @@ A subarray is considered "valid" if it satisfies:
 - a constraint metric.
 - a numeric restriction on the constraint metric.
 
-###  2.2. <a name='UsingSlidingWindow'></a>Using Sliding Window
+###  2.2. Using Sliding Window
 
 Sliding window is used to analyze and find the valid subarrays of an array. The idea behind a sliding window is to maintain two variables, left and right. At any given time, left represents the left bound of our window, and right represents the right bound of our window.
 
@@ -187,7 +174,7 @@ Initially, we set left = right = 0, which means that the first window we conside
 
 Whenever you see a problem that not only describes subarrays being "valid", but also asks you to find these subarrays, you should immediately think about sliding window.
 
-###  2.3. <a name='ImplementationExamples'></a>Implementation Examples
+###  2.3. Implementation Examples
 
 Example 1: find the longest subarray with a sum less than or equal to k
 

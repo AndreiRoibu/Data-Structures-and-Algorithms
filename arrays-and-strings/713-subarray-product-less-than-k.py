@@ -35,6 +35,10 @@ class Solution:
                 current /= nums[left]
                 left += 1
 
+            # We can consider every subarray that ends at right and begins at an
+            # index between left and right as a valid window.
+            # Locking in the ending point, we have right - left + 1 choices for
+            # the starting point.
             answer += right - left + 1
 
         return answer

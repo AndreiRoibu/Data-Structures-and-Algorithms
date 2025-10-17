@@ -8,12 +8,10 @@
 	* 2.1. [Subarrays](#Subarrays)
 	* 2.2. [Using Sliding Window](#UsingSlidingWindow)
 	* 2.3. [Implementation Examples](#ImplementationExamples)
-
-<!-- vscode-markdown-toc-config
-	numbering=true
-	autoSave=true
-	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->
+* 3. [Prefix Sum](#PrefixSum)
+* 4. [O(n) String Building.](#OnStringBuilding)
+* 5. [Subarrays/substrings, subsequences, and subsets](#Subarrayssubstringssubsequencesandsubsets)
+<!-- vscode-markdown-toc -->
 
 ##  1. <a name='TwoPointers'></a>Two Pointers
 
@@ -396,3 +394,58 @@ class Solution2:
 
         return ans
 ```
+
+# 4. O(n) String Building.
+
+To avoid O(n^2) time complexity when building strings in a loop, use a list to collect substrings and join them at the end.
+
+Steps:
+1. Initialize an empty list to hold substrings.
+2. In your loop, append characters or substrings to the list. This is O(1) time
+per append, so the overall time complexity remains O(n).
+3. After the loop, use the `.join(list)` method to concatenate all substrings
+into a single string. This operation is O(n) time.
+4. In total, this costs O(2n) = O(n) time, which is much better than O(n^2).
+
+```python
+def build_string(n):
+    substrings = []
+    for i in n:
+        substrings.append(i)
+    result = ''.join(substrings)
+    return result
+```
+
+# 5. Subarrays/substrings, subsequences, and subsets
+
+Nomenclature clarification:
+- Subarrays/substrings: contiguous elements in an array/string.
+- Subsequences: non-contiguous elements in an array/string, that keeps the
+    original order.
+- Subsets: any combination of elements in an array/string, order does not matter.
+
+## 5.1. Subarrays/substrings
+
+If a problem has explicit constraints such as:
+- Sum greater than or less than k
+- Limits on what is contained, such as the maximum of k unique elements or no duplicates allowed
+
+And/or asks for:
+
+- Minimum or maximum length
+- Number of subarrays/substrings
+- Max or minimum sum
+
+Think about a sliding window.
+
+If a problem's input is an integer array and you find yourself needing to calculate multiple subarray sums, consider building a prefix sum.
+
+The size of a subarray between i and j (inclusive) is j - i + 1. This is also the number of subarrays that end at j, starting from i or later.
+
+## 5.2. Subsequences
+
+From the patterns above, the most common one associated with subsequences is two pointers when two input arrays/strings are given. Because prefix sums and sliding windows represent subarrays/substrings, they are not applicable here.
+
+## 5.3. Subsets
+
+A useful thing that we can do when dealing with subsets that we can't do with subsequences is that you can sort the input, since the order doesn't matter.

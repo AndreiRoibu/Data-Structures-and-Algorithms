@@ -280,3 +280,32 @@ class Solution:
 ```
 
 The time and space complexity of this algorithm is identical to the previous problem's (O(n) for both) for the same reasons. Remember when we said, "you'll see how similar the code is for each problem that falls in this pattern"? Two different problems and the difference in the code is literally 2 characters, "% 2". Note that while not all problems that follow this pattern will use identical code, they will all still be very similar.
+
+# 4. More Examples
+
+## 4.1. Example 1 - Group Anagrams
+
+Given an array of strings strs, group the anagrams together.
+
+For example, given strs = ["eat","tea","tan","ate","nat","bat"], return [["bat"],["nat","tan"],["ate","eat","tea"]].
+
+```python
+from collections import defaultdict
+
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        groups = defaultdict(list)
+        for s in strs:
+            key = "".join(sorted(s))
+            groups[key].append(s)
+
+        return list(groups.values())
+```
+
+Given n as the length of strs and m as the average length of the strings, we iterate over each string and sort it, which costs O(n⋅m⋅logm). Then, we need to iterate over the keys. In the worst case scenario, when there are no matching anagrams, there will be n groups, which means this will cost O(n), giving an overall time complexity of O(n⋅m⋅logm) (the final +n is dominated). The space complexity is O(n⋅m) as each string will be placed in an array within the hash map.
+
+## 4.2. Example 2 - Minimum Consecutive Cards to Pick Up
+
+## 4.3. Example 3 - Max Sum of a Pair With Equal Sum of Digits
+
+## 4.4. Example 4 - Equal Row and Column Pairs

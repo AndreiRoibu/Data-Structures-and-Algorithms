@@ -306,6 +306,26 @@ Given n as the length of strs and m as the average length of the strings, we ite
 
 ## 4.2. Example 2 - Minimum Consecutive Cards to Pick Up
 
+Given an integer array cards, find the length of the shortest subarray that contains at least one duplicate. If the array has no duplicates, return -1.
+
+```python
+from collections import defaultdict
+
+class Solution:
+    def minimumCardPickup(self, cards: List[int]) -> int:
+        dic = defaultdict(int)
+        ans = float("inf")
+        for i in range(len(cards)):
+            if cards[i] in dic:
+                ans = min(ans, i - dic[cards[i]] + 1)
+
+            dic[cards[i]] = i
+
+        return ans if ans < float("inf") else -1
+```
+
+The time complexity of this algorithm is O(n) because we only need to iterate through cards once, and each operation inside the for loop runs in constant time. The space complexity is also O(n) in the worst case scenario where there are no duplicates, and we need to store every card in the hash map.
+
 ## 4.3. Example 3 - Max Sum of a Pair With Equal Sum of Digits
 
 ## 4.4. Example 4 - Equal Row and Column Pairs

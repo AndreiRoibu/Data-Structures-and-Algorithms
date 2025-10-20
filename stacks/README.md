@@ -71,5 +71,24 @@ Because the stack's push and pop operations are O(1), this gives us a time compl
 
 ## 2.2. Example 2 - Remove all Adjacent Duplicates In String
 
+You are given a string s. Continuously remove duplicates (two of the same character beside each other) until you can't anymore. Return the final string after this.
+
+For example, given s = "abbaca", you can first remove the "bb" to get "aaca". Next, you can remove the "aa" to get "ca". This is the final answer.
+
+```python
+class Solution:
+    def removeDuplicates(self, s: str) -> str:
+        stack = []
+        for c in s:
+            if stack and stack[-1] == c:
+                stack.pop()
+            else:
+                stack.append(c)
+
+        return "".join(stack)
+```
+
+Remember that stacks are defined by their interface - we just need to add and remove from the same end. Because strings in C++ are mutable, we can just use a string as a stack and return the answer directly. In Java, we can use StringBuilder as a stack as its a convenient way to get the answer in string format at the end. This algorithm has a time and space complexity of O(n), where n is the length of the input. This is because the stack operations in all implementations above are O(1), and the stacks themselves can grow to O(n) size.
+
 ## 2.3. Example 3 - Backspace String Compare
 

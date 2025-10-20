@@ -264,3 +264,38 @@ This problem is quite difficult - try your best to understand the solution as it
 
 ## 4.3. Example 3 - Longest Continous Subarray With Absolute Diff Less Than or Equal to Limit
 
+Given an array of integers nums and an integer limit, return the size of the longest subarray such that the absolute difference between any two elements of this subarray is less than or equal to limit.
+
+```python
+from collections import deque
+
+class Solution:
+    def longestSubarray(self, nums: List[int], limit: int) -> int:
+        increasing = deque()
+        decreasing = deque()
+        left = ans = 0
+
+        for right in range(len(nums)):
+            # maintain the monotonic deques
+            while increasing and increasing[-1] > nums[right]:
+                increasing.pop()
+            while decreasing and decreasing[-1] < nums[right]:
+                decreasing.pop()
+
+            increasing.append(nums[right])
+            decreasing.append(nums[right])
+
+            # maintain window property
+            while decreasing[0] - increasing[0] > limit:
+                if nums[left] == decreasing[0]:
+                    decreasing.popleft()
+                if nums[left] == increasing[0]:
+                    increasing.popleft()
+                left += 1
+
+            ans = max(ans, right - left + 1)
+
+        return ans
+```
+
+With efficient queues, this algorithm has a time and space complexity of O(n) as each for loop iteration is amortized O(1) and the deques can grow to size n, where n is the size of nums.

@@ -222,4 +222,45 @@ class Solution:
 
 ## 4.2. Example 2 - Sliding Window Maximum
 
+Given an integer array nums and an integer k, there is a sliding window of size k that moves from the very left to the very right. For each window, find the maximum element in the window.
+
+For example, given nums = [1, 3, -1, -3, 5, 3, 6, 7], k = 3, return [3, 3, 5, 5, 6, 7]. The first window is [1, 3, -1, -3, 5, 3, 6, 7] and the last window is [1, 3, -1, -3, 5, 3, 6, 7]
+
+Note: this problem is significantly more difficult than any problem we have looked at so far. Don't be discouraged if you are having trouble understanding the solution.
+
+```python
+from collections import deque
+
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        ans = []
+        queue = deque()
+        for i in range(len(nums)):
+            # maintain monotonic decreasing.
+            # all elements in the deque smaller than the current one
+            # have no chance of being the maximum, so get rid of them
+            while queue and nums[i] > nums[queue[-1]]:
+                queue.pop()
+
+            queue.append(i)
+
+            # queue[0] is the index of the maximum element.
+            # if queue[0] + k == i, then it is outside the window
+            if queue[0] + k == i:
+                queue.popleft()
+
+            # only add to the answer once our window has reached size k
+            if i >= k - 1:
+                ans.append(nums[queue[0]])
+
+        return ans
+```
+
+This problem is quite difficult - try your best to understand the solution as it is a good demonstration of how powerful a deque is - the time complexity is O(n), where n is the size of nums! The space complexity is O(k), since the deque can't grow beyond that size. To summarize:
+
+- We use a monotonic decreasing deque, which implies that the first element is the maximum.
+- Once the maximum element is too far to stay in the window we remove it from the deque, and the next greatest element moves to position 0.
+- To maintain the decreasing order, we remove elements from the deque that are smaller than the elements being added.
+
 ## 4.3. Example 3 - Longest Continous Subarray With Absolute Diff Less Than or Equal to Limit
+

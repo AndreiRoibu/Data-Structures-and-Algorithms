@@ -361,3 +361,36 @@ Just like in the last example, the first algorithm always uses
 O(n) space because we store all the elements in the hash map's values, but with the improvement, the average case will use much less space since each key only stores an integer. We also save on an extra iteration and a sort in each iteration, giving us a time complexity of O(n), where n is the length of the input array.
 
 ## 4.4. Example 4 - Equal Row and Column Pairs
+
+Given an n x n matrix grid, return the number of pairs (R, C) where R is a row and C is a column, and R and C are equal if we consider them as 1D arrays.
+
+```python
+from collections import defaultdict
+
+class Solution:
+    def equalPairs(self, grid: List[List[int]]) -> int:
+        def convert_to_key(arr):
+            # Python is quite a nice language for coding interviews!
+            return tuple(arr)
+
+        dic = defaultdict(int)
+        for row in grid:
+            dic[convert_to_key(row)] += 1
+
+        dic2 = defaultdict(int)
+        for col in range(len(grid[0])):
+            current_col = []
+            for row in range(len(grid)):
+                current_col.append(grid[row][col])
+
+            dic2[convert_to_key(current_col)] += 1
+
+        ans = 0
+        for arr in dic:
+            ans += dic[arr] * dic2[arr]
+
+        return ans
+
+```
+
+If the grid has a size of n⋅n, this algorithm has a time complexity of O(n^2) - there are n^2 elements and each element is iterated over twice initially (once for the row it occupies and once for the column it occupies). Populating and then iterating over the hash maps will be dominated by this. The space complexity is O(n^2) - if all rows and columns are unique, then each of the two hash maps will both grow to a size of n, with each key having a length of n.

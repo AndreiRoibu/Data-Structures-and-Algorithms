@@ -328,4 +328,36 @@ The time complexity of this algorithm is O(n) because we only need to iterate th
 
 ## 4.3. Example 3 - Max Sum of a Pair With Equal Sum of Digits
 
+Given an array of integers nums, find the maximum value of nums[i] + nums[j], where nums[i] and nums[j] have the same digit sum (the sum of their individual digits). Return -1 if there is no pair of numbers with the same digit sum.
+
+```python
+
+from collections import defaultdict
+
+class Solution:
+    def maximumSum(self, nums: List[int]) -> int:
+        def get_digit_sum(num):
+            digit_sum = 0
+            while num:
+                digit_sum += num % 10
+                num //= 10
+
+            return digit_sum
+
+        dic = defaultdict(int)
+        ans = -1
+        for num in nums:
+            digit_sum = get_digit_sum(num)
+            if digit_sum in dic:
+                ans = max(ans, num + dic[digit_sum])
+            dic[digit_sum] = max(dic[digit_sum], num)
+
+        return ans
+
+```
+
+Just like in the last example, the first algorithm always uses
+
+O(n) space because we store all the elements in the hash map's values, but with the improvement, the average case will use much less space since each key only stores an integer. We also save on an extra iteration and a sort in each iteration, giving us a time complexity of O(n), where n is the length of the input array.
+
 ## 4.4. Example 4 - Equal Row and Column Pairs

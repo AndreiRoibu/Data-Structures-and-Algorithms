@@ -1,6 +1,6 @@
 # Stacks and Queues
 
-## 1.1 Introduction to Stacks and Queues
+## 1.1 Introduction to Stacks
 
 A stack is an ordered collection of elements where elements are only added and removed from the same end. Another term used to describe stacks is LIFO, which stands for last in, first out. The last (most recent) element placed inside is the first element to come out.
 
@@ -35,6 +35,41 @@ stack[-1] # 1
 
 # Get size
 len(stack) # 1
+```
+
+## 1.2 Introduction to Queues
+
+While a stack followed a LIFO pattern, a queue follows FIFO (first in first out). In a stack, elements are added and removed from the same side. In a queue, elements are added and removed from opposite sides. Like with a stack, there are multiple ways to implement a queue, but the important thing that defines it is the abstract interface of adding and removing from opposite sides.
+
+Queues are trickier to implement than stacks if you want to maintain good performance. Like a stack, you could just use a dynamic array, but operations on the front of the array (adding or removal) are O(n), where n is the size of the array. Adding to a queue is called enqueue and deletions are called dequeue. If you want these operations to be O(1), you'll need a more sophisticated implementation.
+
+One way to implement an efficient queue is by using a doubly linked list. Recall that with a doubly linked list, if you have the pointer to a node, you can add or delete at that location in O(1). A doubly linked list that maintains pointers to the head and tail (both ends, usually with sentinel nodes) can implement an efficient queue.
+
+There is also a data structure called a deque, short for double-ended queue, and pronounced "deck". In a deque, you can add or delete elements from both ends. A normal queue designates adding to one end and deleting to another end.
+
+The most common use of a queue is to implement an algorithm called breadth-first search (BFS). Outside of BFS, unlike stack, there aren't many problems whose main focus is a queue.
+
+```python
+# Declaration: we will use deque from the collections module
+import collections
+queue = collections.deque()
+
+# If you want to initialize it with some initial values:
+queue = collections.deque([1, 2, 3])
+
+# Enqueueing/adding elements:
+queue.append(4)
+queue.append(5)
+
+# Dequeuing/removing elements:
+queue.popleft() # 1
+queue.popleft() # 2
+
+# Check element at front of queue (next element to be removed)
+queue[0] # 3
+
+# Get size
+len(queue) # 3
 ```
 
 # 2. String Problems
@@ -113,3 +148,31 @@ class Solution:
 ```
 
 Just like in the previous approaches, this approach has a time and space complexity linear with the input sizes, because our stack implementations are efficient.
+
+# 3. Queue Problems
+
+## 3.1. Example 1 - Number of Recent Calls
+
+Implement the RecentCounter class. It should support ping(int t), which records a call at time t, and then returns an integer representing the number of calls that have happened in the range [t - 3000, t]. Calls to ping will have increasing t.
+
+```python
+from collections import deque
+
+class RecentCounter:
+    def __init__(self):
+        self.queue = deque()
+
+    def ping(self, t: int) -> int:
+        while self.queue and self.queue[0] < t - 3000:
+            self.queue.popleft()
+
+        self.queue.append(t)
+        return len(self.queue)
+
+
+# Your RecentCounter object will be instantiated and called as such:
+# obj = RecentCounter()
+# param_1 = obj.ping(t)
+```
+
+In Python, we're using collections.deque to implement the queue. This data structure allows us to perform dequeue operations from the front in O(1).

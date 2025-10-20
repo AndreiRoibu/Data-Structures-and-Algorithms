@@ -176,3 +176,50 @@ class RecentCounter:
 ```
 
 In Python, we're using collections.deque to implement the queue. This data structure allows us to perform dequeue operations from the front in O(1).
+
+# 4. Monotonic
+
+Monotonic: (of a function or quantity) varying in such a way that it either never decreases or never increases.
+
+A monotonic stack or queue is one whose elements are always sorted. It can be sorted either ascending or descending, depending on the algorithm. Monotonic stacks and queues maintain their sorted property by removing elements that would violate the property before adding new elements. For example, let's say you had a monotonically increasing stack, currently stack = [1, 5, 8, 15, 23]. You want to push 14 onto the stack. To maintain the sorted property, we need to first pop the 15 and 23 before pushing the 14 - after the push operation, we have stack = [1, 5, 8, 14].
+
+Here's some pseudocode for maintaining a monotonic increasing stack over an input array:
+
+```
+Given an integer array nums
+
+stack = []
+for num in nums:
+    while stack.length > 0 AND stack.top >= num:
+        stack.pop()
+    // Between the above and below lines, do some logic depending on the problem
+    stack.push(num)
+
+```
+
+As we discussed earlier in the sliding window chapter, despite the nested loop, the time complexity is still O(n), where n is the length of the array, because the inner while loop can only iterate over each element once across all for loop iterations, making the for loop iterations amortized O(1).
+
+Monotonic stacks and queues are useful in problems that, for each element, involves finding the "next" element based on some criteria, for example, the next greater element. They're also good when you have a dynamic window of elements and you want to maintain knowledge of the maximum or minimum element as the window changes. In more advanced problems, sometimes a monotonic stack or queue is only one part of the algorithm. Let's look at some examples.
+
+## 4.1. Example 1 - Daily Temperatures
+
+Given an array of integers temperatures that represents the daily temperatures, return an array answer such that answer[i] is the number of days you have to wait after the ith day to get a warmer temperature. If there is no future day that is warmer, have answer[i] = 0 instead.
+
+```python
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        stack = []
+        answer = [0] * len(temperatures)
+
+        for i in range(len(temperatures)):
+            while stack and temperatures[stack[-1]] < temperatures[i]:
+                j = stack.pop()
+                answer[j] = i - j
+            stack.append(i)
+
+        return answer
+```
+
+## 4.2. Example 2 - Sliding Window Maximum
+
+## 4.3. Example 3 - Longest Continous Subarray With Absolute Diff Less Than or Equal to Limit

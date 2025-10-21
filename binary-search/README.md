@@ -54,13 +54,13 @@ def binary_search(arr, target):
 If your input has duplicates, you can modify the binary search template to find either the first or the last position of a given element. If target appears multiple times, then the following template will find the left-most index:
 
 ```python
-def binary_search(arr, target):
+def binary_search_leftmost(arr, target):
     left = 0
-    right = len(arr)
-    while left < right:
+    right = len(arr)                # DIFF vs. Std
+    while left < right:             # DIFF vs. Std
         mid = (left + right) // 2
-        if arr[mid] >= target:
-            right = mid
+        if arr[mid] >= target:      # DIFF vs. Std
+            right = mid             # DIFF vs. Std
         else:
             left = mid + 1
 
@@ -70,12 +70,12 @@ The following template will find the right-most insertion point (the index of th
 
 ```python
 
-def binary_search(arr, target):
+def binary_search_rightmost(arr, target):
     left = 0
     right = len(arr)
     while left < right:
         mid = (left + right) // 2
-        if arr[mid] > target:
+        if arr[mid] > target:   # DIFF vs. Leftmost
             right = mid
         else:
             left = mid + 1
@@ -140,3 +140,38 @@ class Solution:
 ```
 
 Because there are O(m⋅n) elements, the initial search space has a size of O(m⋅n), which means this algorithm has a time complexity of O(log(m⋅n)). We don't use any extra space except for a few integer variables.
+
+## Example 3 - Successful Pairs of Spells and Potions
+
+You are given two positive integer arrays spells and potions, where spells[i] represents the strength of the i-th spell and potions[j] represents the strength of the j-th potion. You are also given an integer success. A spell and potion pair is considered successful if the product of their strengths is at least success. For each spell, find how many potions it can pair with to be successful. Return an integer array where the i-th element is the answer for the i-th spell.
+
+```python
+class Solution:
+    def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
+        def binary_search(arr, target):
+            left = 0
+            right = len(arr)
+            while left < right:
+                mid = (left + right) // 2
+                if arr[mid] >= target:
+                    right = mid
+                else:
+                    left = mid + 1
+
+            return left
+
+        potions.sort()
+        ans = []
+        m = len(potions)
+
+        for spell in spells:
+            i = binary_search(potions, success / spell)
+            ans.append(m - i)
+
+        return ans
+
+```
+
+To sort potions, it costs O(m⋅logm). Then, we iterate n times, performing a O(logm) binary search on each iteration. This gives us a time complexity of O((m+n)⋅logm), which is much faster than O(m⋅n) because logm is small. Because we are sorting the input, some space is used depending on the sorting algorithm used by your language.
+
+Binary searching on an array is a simple tool to improve an algorithm's time complexity by a huge amount. Anytime you have a sorted array (or are able to sort an array without consequence), consider using binary search to quickly find the insertion index of a desired element. Try these upcoming practice problems before moving on to the next pattern.

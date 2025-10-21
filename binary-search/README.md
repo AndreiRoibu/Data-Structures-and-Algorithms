@@ -91,3 +91,52 @@ Binary search is a common optimization to a linear scan when searching for an el
 
 You are given an array of integers nums which is sorted in ascending order, and an integer target. If target exists in nums, return its index. Otherwise, return -1.
 
+```python
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        left = 0
+        right = len(nums) - 1
+
+        while left <= right:
+            mid = (left + right) // 2
+            num = nums[mid]
+
+            if num == target:
+                return mid
+
+            if num > target:
+                right = mid - 1
+            else:
+                left = mid + 1
+
+        return -1
+```
+
+## 2.2. Example 2 - Search a 2D Matrix
+
+Write an efficient algorithm that searches for a value target in an m x n integer matrix matrix. Integers in each row are sorted from left to right. The first integer of each row is greater than the last integer of the previous row.
+
+```python
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        m, n = len(matrix), len(matrix[0])
+        left, right = 0, m * n - 1
+
+        while left <= right:
+            mid = (left + right) // 2
+            row = mid // n
+            col = mid % n
+            num = matrix[row][col]
+
+            if num == target:
+                return True
+
+            if num < target:
+                left = mid + 1
+            else:
+                right = mid - 1
+
+        return False
+```
+
+Because there are O(m⋅n) elements, the initial search space has a size of O(m⋅n), which means this algorithm has a time complexity of O(log(m⋅n)). We don't use any extra space except for a few integer variables.

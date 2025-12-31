@@ -45,6 +45,10 @@ class Solution:
                 return number
 
 
+# Explanation:
+# - Put all numbers in a set for O(1) membership checks.
+# - Scan from 0 to n to find the missing value.
+
 # Complexity Analysis:
 # Time complexity: O(n) where n is the length of nums. We traverse the nums
 # array once to create the set and then in the worst case, we may have to

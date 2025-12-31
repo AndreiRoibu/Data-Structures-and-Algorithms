@@ -51,6 +51,11 @@ class Solution:
         return -1
 
 
+# Explanation:
+# - Compute the total sum once, then scan while maintaining a left sum.
+# - The right sum is total - left sum - current value.
+# - The first index where left sum equals right sum is the pivot.
+
 # Complexity Analysis:
 # Time complexity: O(n), where n is the length of nums. We traverse the list once.
 # Space complexity: O(1), since we are using only a constant amount of extra space.

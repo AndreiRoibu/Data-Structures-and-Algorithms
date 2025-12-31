@@ -34,6 +34,11 @@ class Solution:
             rp -= 1
 
 
+# Explanation:
+# - Use two pointers at the ends of the list.
+# - Swap the characters and move the pointers toward the center.
+# - This reverses the list in place with constant extra space.
+
 # Complexity Analysis:
 # Time complexity : O(n) since we traverse the input string once.
 # Space complexity : O(1) since we use only constant space.

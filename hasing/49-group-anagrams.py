@@ -47,6 +47,11 @@ class Solution:
         return list(seen.values())
 
 
+# Explanation:
+# - Use the sorted characters of each string as a canonical anagram key.
+# - Group strings by this key in a dictionary.
+# - Return the grouped values.
+
 # Complexity Analysis:
 # Time complexity: O(NKlogK), where N is the length of strs, and K is
 # the maximum length of a string in strs.

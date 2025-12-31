@@ -55,6 +55,11 @@ class Solution:
                 left_idx += 1
 
 
+# Explanation:
+# - Use two pointers at the ends of the sorted array.
+# - If the sum is too large, move the right pointer left; if too small, move left pointer right.
+# - The first time the sum equals target, return the 1-indexed positions, because the problem specifies 1-indexing.
+
 # Complexity:
 # Time: O(n): We traverse the list containing n elements only once.
 # Space: O(1): We only use constant extra space.

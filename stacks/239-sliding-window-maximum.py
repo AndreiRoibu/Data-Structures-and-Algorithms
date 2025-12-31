@@ -60,6 +60,11 @@ class Solution:
         return ans
 
 
+# Explanation:
+# - Keep a deque of indices with values in decreasing order.
+# - Drop smaller values from the right and expired indices from the left.
+# - The front of the deque is the current window maximum.
+
 # Complexity Analysis:
 # Time complexity : O(N) - Each element is pushed and popped at most once from
 # the deque.

@@ -45,6 +45,13 @@ class Solution:
         return answer
 
 
+# Explanation:
+# - Treat 1 as +1 and 0 as -1, so equal zeros and ones means prefix sum repeats.
+# - In other words, when the same cumulative sum appears again, the subarray
+#   between the two indices has equal numbers of 0s and 1s.
+# - Store the first index where each prefix sum appears.
+# - The distance between repeated sums gives a candidate length; keep the max.
+
 # Complexity Analysis:
 # Time complexity: O(n) - We traverse the array once, performing O(1) operations
 # for each element. Thus, the overall time complexity is linear with respect to

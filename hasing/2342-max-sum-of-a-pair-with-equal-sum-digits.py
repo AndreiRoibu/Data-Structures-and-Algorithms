@@ -52,6 +52,11 @@ class Solution:
         return answer
 
 
+# Explanation:
+# - Compute the digit sum for each number.
+# - Track the largest number seen for each digit sum.
+# - When a digit sum repeats, update the best pair sum.
+
 # Complexity Analysis:
 # Time Complexity: O(N * D), where N is the number of elements in the input
 # array nums, and D is the number of digits in the maximum number in nums. This is

@@ -55,6 +55,11 @@ class Solution:
         return [next_greater[x] for x in nums1]
 
 
+# Explanation:
+# - Use a monotonic decreasing stack over nums2 to compute next greater values.
+# - When a larger number appears, resolve next greater for smaller stacked values.
+# - Map each nums1 value through the precomputed dictionary.
+
 # Complexity Analysis:
 # Time Complexity: O(N + M), where N is the length of nums1 and M is the
 # length of nums2.

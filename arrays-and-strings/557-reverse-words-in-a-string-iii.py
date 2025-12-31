@@ -39,6 +39,11 @@ class Solution:
         return "".join(chars)
 
 
+# Explanation:
+# - Convert the string to a list so we can swap characters in place.
+# - Scan for word boundaries (spaces or end), then reverse that segment.
+# - Join the list back into a string with words reversed in place.
+
 # Complexity Analysis:
 # Time complexity: O(n), where n is the length of s. We traverse the list of characters
 # once, and each character is involved in at most one swap.

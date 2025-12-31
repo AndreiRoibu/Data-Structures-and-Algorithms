@@ -45,6 +45,11 @@ class Solution:
         return 0 if answer == float("inf") else answer
 
 
+# Explanation:
+# - Use a sliding window to keep the running sum of a contiguous subarray.
+# - Expand to the right until the sum meets the target, then shrink from the left.
+# - Track the smallest window length that satisfies the condition.
+
 # Complexity Analysis:
 # Time complexity: O(n), where n is the length of nums. Each element is visited
 # at most twice (once by the right pointer and once by the left pointer).

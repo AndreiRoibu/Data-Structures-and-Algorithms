@@ -37,6 +37,11 @@ class Solution:
         return "".join(stack)
 
 
+# Explanation:
+# - Use a stack to track the current characters.
+# - If the next character matches the stack top, remove the pair.
+# - The stack contents form the final string.
+
 # Complexity Analysis:
 # Time Complexity: O(N), where N is the length of the string s. We traverse
 # the string once.

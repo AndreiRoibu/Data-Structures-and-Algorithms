@@ -75,6 +75,13 @@ class Solution:
         return answer
 
 
+# Explanation:
+# - Sort potions so stronger potions appear to the right.
+# - For each spell, binary search the first potion that reaches success / spell.
+# - All potions from that index to the end form successful pairs.
+# - We use a subset of binary search to find the leftmost index where potions[i] >= target.
+# - We use the leftmost index because all potions to the right will also satisfy the condition.
+
 # Complexity Analysis:
 # Time Complexity: O((m + n) log m), where n is the length of spells and m is the
 # length of potions. We sort the potions array in O(m log m) time, and for each spell,

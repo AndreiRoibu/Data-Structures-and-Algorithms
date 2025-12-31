@@ -34,11 +34,14 @@ class Solution:
         return sum(seen.values())
 
 
+# Explanation:
+# - Scan each stone and check whether it is a jewel type.
+# - Count matching stones in a dictionary and sum the counts at the end.
+
 # Complexity Analysis:
-# Time Complexity: O(J + S), where J is the length of the jewels string and S
-# is the length of the stones string. We iterate through both strings once.
-# Can be considered O(N) where N is the length of the stones string, since J
-# is limited to 50.
+# Time Complexity: O(S * J), where S is the length of stones and J is the
+# length of jewels, since membership checks scan the jewels string. With J
+# bounded by 52, this is effectively O(S).
 # Space Complexity: O(J), where J is the length of the jewels string. In the
 # worst case, we may store all jewel types in the seen dictionary. Can be O(1)
 # since the number of possible jewel types is limited to 52 (26 lowercase and

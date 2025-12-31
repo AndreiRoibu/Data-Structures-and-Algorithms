@@ -38,6 +38,11 @@ class Solution:
         return answer
 
 
+# Explanation:
+# - Track prefix sums and how often each sum has occurred.
+# - A subarray sums to k when current_sum - k has been seen before.
+# - Accumulate counts of such prefixes as we scan.
+
 # Complexity Analysis
 # Time complexity: O(n), where n is the length of the input array nums. We
 # traverse the array once, performing constant-time operations for each element.

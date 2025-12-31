@@ -57,6 +57,11 @@ class Solution:
         return not stack
 
 
+# Explanation:
+# - Push opening brackets onto a stack.
+# - On a closing bracket, pop and verify the types match.
+# - The string is valid only if the stack is empty at the end.
+
 # Complexity Analysis:
 # Time Complexity: O(N), where N is the length of the input string s. We
 # traverse the string once.

@@ -79,6 +79,11 @@ class Solution:
         return answer
 
 
+# Explanation:
+# - Use two deques to track the current window minimum and maximum.
+# - Expand right, and shrink left while max - min exceeds limit.
+# - Track the largest valid window length.
+
 # Complexity Analysis
 # Time Complexity: O(N), where N is the length of nums. Each element is added
 # and removed from each deque at most once.

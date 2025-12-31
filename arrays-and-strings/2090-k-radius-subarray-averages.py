@@ -74,6 +74,11 @@ class Solution:
         return answer
 
 
+# Explanation:
+# - A k-radius average uses a fixed window of size 2k + 1 centered at each index.
+# - If that window does not fit, return -1s; otherwise compute the first window sum.
+# - Slide the window across the array, updating the sum in O(1) and filling the center.
+
 # Complexity Analysis
 # - Time complexity: O(n), where n is the length of nums. This is because we are
 # iterating through the array once to compute the k-radius averages.

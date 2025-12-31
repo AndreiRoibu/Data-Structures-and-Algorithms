@@ -58,6 +58,11 @@ class Solution:
         # return not (Counter(ransomNote) - Counter(magazine))
 
 
+# Explanation:
+# - Count available letters in magazine.
+# - For each letter in ransomNote, decrement the count and fail if missing.
+# - If all counts stay non-negative, construction is possible.
+
 # Complexity Analysis:
 # Time Complexity: O(N + M), where N is the length of ransomNote and M is the length of magazine.
 # We traverse both strings once to build the frequency dictionary and check

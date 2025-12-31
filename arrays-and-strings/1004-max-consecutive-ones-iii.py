@@ -29,6 +29,11 @@ class Solution:
         return ans
 
 
+# Explanation:
+# - Expand a sliding window while tracking how many zeros are inside it.
+# - If zeros exceed k, shrink from the left until the window is valid again.
+# - Track the maximum window length seen.
+
 # Complexity Analysis
 # ----------------------------
 # Time Complexity: O(N), where N is the length of nums. Each element is visited

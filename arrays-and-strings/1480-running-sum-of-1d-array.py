@@ -34,6 +34,10 @@ class Solution:
         return nums
 
 
+# Explanation:
+# - Accumulate the running sum directly in the input array.
+# - Each position adds the previous running total, producing the prefix sum.
+
 # Complexity Analysis
 # - Time complexity: O(n), where n is the length of nums. This is because we are
 # iterating through the array once to compute the running sum.

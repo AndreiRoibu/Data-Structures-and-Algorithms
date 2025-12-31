@@ -30,6 +30,10 @@ class Solution:
         return len(seen) == 26
 
 
+# Explanation:
+# - Insert each character into a set to deduplicate.
+# - A sentence is a pangram if the set reaches 26 unique letters.
+
 # Complexity Analysis:
 # Time complexity: O(n), where n is the length of the sentence. We traverse the
 # entire sentence once to add characters to the set.

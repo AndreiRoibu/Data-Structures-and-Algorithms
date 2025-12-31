@@ -56,6 +56,11 @@ class MovingAverage:
         return self.window_sum / denominator
 
 
+# Explanation:
+# - Keep a queue of the last `size` values and a running sum.
+# - When the window exceeds the size, drop the oldest value.
+# - Divide the running sum by the current window length.
+
 # Complexity Analysis:
 # Time complexity: O(1) for each call to next.
 # Space complexity: O(size) to store the elements in the queue.

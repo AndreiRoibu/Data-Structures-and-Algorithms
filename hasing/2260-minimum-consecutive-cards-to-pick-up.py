@@ -34,6 +34,11 @@ class Solution:
         return answer if answer < float("inf") else -1
 
 
+# Explanation:
+# - Track the last index where each card value was seen.
+# - When a value repeats, compute the window length between the two indices.
+# - Keep the minimum such length across all repeats.
+
 # Complexity Analysis:
 # Time complexity: O(N), where N is the length of cards. We traverse
 # the cards array once.

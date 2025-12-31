@@ -62,6 +62,11 @@ class StockSpanner:
 # obj = StockSpanner()
 # param_1 = obj.next(price)
 
+# Explanation:
+# - Maintain a monotonic decreasing stack of (price, span).
+# - Pop and add spans while previous prices are <= current price.
+# - Push the combined span and return it.
+
 # Complexity Analysis:
 # Time Complexity: O(N) amortized time for N calls to next.
 # Each price is pushed and popped at most once from the stack.

@@ -32,6 +32,10 @@ class Solution:
         return answer
 
 
+# Explanation:
+# - Store all values in a set for O(1) membership checks.
+# - Count each element whose value + 1 also exists in the set.
+
 # Complexity Analysis:
 # Time complexity: O(n) where n is the length of arr. We traverse the arr
 # array once to create the set and then once more to count the elements.

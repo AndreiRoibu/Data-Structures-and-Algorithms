@@ -36,6 +36,11 @@ class Solution:
         return answer / k
 
 
+# Explanation:
+# - Compute the sum of the first window of size k.
+# - Slide the window by one each step, updating the sum in O(1).
+# - Track the maximum window sum and divide by k at the end.
+
 # Complexity Analysis:
 # - Time complexity: O(N), where N is the length of nums. We traverse the nums
 #   array once.

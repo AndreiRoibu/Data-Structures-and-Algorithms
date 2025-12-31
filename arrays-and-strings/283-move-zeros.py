@@ -40,6 +40,11 @@ class Solution:
         return nums
 
 
+# Explanation:
+# - Use j as the next write position for non-zero elements.
+# - Copy all non-zeros forward in one pass, preserving order.
+# - Fill the remaining slots with zeros.
+
 # Complexity Analysis:
 # Time complexity: O(n), where n is the length of nums. We traverse the list twice.
 # Space complexity: O(1), since we are modifying the list in place and not using

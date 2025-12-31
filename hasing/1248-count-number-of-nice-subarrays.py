@@ -36,6 +36,14 @@ class Solution:
         return answer
 
 
+# Explanation:
+# - Convert the array into a running count of odd numbers (prefix sums).
+# - Let current be the number of odds up to index r. A subarray l..r has k odds
+#   if current - prefix[l-1] = k, so prefix[l-1] must equal current - k.
+# - counts[current - k] therefore tells how many valid starts exist for this r.
+# - counts[0] = 1 represents the empty prefix, allowing subarrays starting at 0.
+# - Update counts[current] after each element so later positions can use it.
+
 # Complexity Analysis
 # Time complexity: O(n), where n is the length of the input array nums. We
 # traverse the array once.

@@ -52,6 +52,12 @@ class Solution:
         return ans
 
 
+# Explanation:
+# - Build a prefix sum array so each left sum is O(1).
+# - For each split point i, compute right sum as total - prefix[i].
+# - Count splits where left sum is at least right sum.
+
+
 class Solution2:
     def waysToSplitArray(self, nums: list[int]) -> int:
         ans = left_section = 0
@@ -65,6 +71,11 @@ class Solution2:
 
         return ans
 
+
+# Explanation:
+# - Compute total sum once, then scan left to right.
+# - Maintain a running left sum and derive right sum as total - left.
+# - Count valid split points without storing a prefix array.
 
 # Complexity Analysis - Solution 1
 # ----------------------------

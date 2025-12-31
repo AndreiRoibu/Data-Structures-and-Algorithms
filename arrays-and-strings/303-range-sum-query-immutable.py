@@ -48,6 +48,10 @@ class NumArray:
 # obj = NumArray(nums)
 # param_1 = obj.sumRange(left,right)
 
+# Explanation:
+# - Precompute prefix sums so each range sum can be answered in O(1).
+# - The sum from left to right equals prefix[right] - prefix[left] + nums[left].
+
 # Complexity Analysis:
 # Time complexity: O(1) for each sumRange query after an initial O(n)
 #   preprocessing time to build the prefix sum array.

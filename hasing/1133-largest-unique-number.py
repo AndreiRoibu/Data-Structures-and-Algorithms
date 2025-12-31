@@ -30,6 +30,10 @@ class Solution:
         return answer
 
 
+# Explanation:
+# - Count frequencies of each number.
+# - Track the maximum value that occurs exactly once.
+
 # Complexity Analysis
 # Time Complexity: O(N), where N is the length of the input array nums. We
 # traverse the array once to count the occurrences of each number, and then
@@ -51,6 +55,10 @@ class Solution2:
 
         return -1
 
+
+# Explanation:
+# - Count frequencies of each number.
+# - Sort the unique numbers in descending order and return the first with freq 1.
 
 # Complexity Analysis
 # Time Complexity: O(N log N), where N is the length of the input array nums. We

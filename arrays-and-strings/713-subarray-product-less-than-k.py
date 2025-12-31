@@ -44,6 +44,11 @@ class Solution:
         return answer
 
 
+# Explanation:
+# - Maintain a sliding window with product < k.
+# - Expand right, and while the product is too large, shrink from the left.
+# - For each right, add the count of valid subarrays ending at right.
+
 # Complexity Analysis:
 # Time complexity: O(n), where n is the length of nums. Each element is
 # processed at most twice (once by the right pointer and once by the left pointer).

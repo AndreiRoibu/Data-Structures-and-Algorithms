@@ -53,6 +53,11 @@ class RecentCounter:
 # obj = RecentCounter()
 # param_1 = obj.ping(t)
 
+# Explanation:
+# - Keep a queue of timestamps in increasing order.
+# - Pop from the left while times are older than t - 3000.
+# - Append t and return the queue length.
+
 # Complexity Analysis
 # Time Complexity: O(1) amortized for each call to ping. Each request is
 # added to the queue once and removed from the queue once.

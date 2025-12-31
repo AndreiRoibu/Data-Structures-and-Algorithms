@@ -48,6 +48,11 @@ class Solution:
         return False
 
 
+# Explanation:
+# - Treat the matrix as a sorted 1D array of length rows * cols.
+# - Use binary search and map mid to (row, col) via division and modulo.
+# - Compare the mapped value to target and shrink the search space.
+
 # Complexity Analysis:
 # Time Complexity: O(log(m * n)), where m is the number of rows and n is the
 # number of columns in the matrix. We are performing a binary search on the

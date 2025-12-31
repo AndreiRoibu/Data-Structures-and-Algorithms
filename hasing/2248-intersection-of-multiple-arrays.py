@@ -35,11 +35,15 @@ class Solution:
         return sorted(original_set)
 
 
+# Explanation:
+# - Start with the first list's values as a set.
+# - Intersect with each subsequent list to keep only common values.
+# - Sort the final intersection.
+
 # Complexity Analysis:
-# Time Complexity: O(m⋅(n+logm)) - where n is the number of lists and m is the
-# average number of elements in each list.
-# Space Complexity: O(n⋅m) - in the worst case, when all elements are unique
-# across all lists.
+# Time Complexity: O(S + k log k), where S is the total number of elements
+# across all lists and k is the size of the intersection (for sorting).
+# Space Complexity: O(M), where M is the size of the largest list.
 
 from collections import defaultdict  # noqa: E402
 
@@ -60,8 +64,12 @@ class Solution2:
         return sorted(ans)
 
 
+# Explanation:
+# - Count how many arrays each value appears in.
+# - Any value with count equal to the number of arrays is in the intersection.
+# - Sort the resulting list.
+
 # Complexity Analysis:
-# Time Complexity: O(m⋅(n+logm)) - where n is the number of lists and m is the
-# average number of elements in each list.
-# Space Complexity: O(n⋅m) - in the worst case, when all elements are unique
-# across all lists.
+# Time Complexity: O(S + k log k), where S is the total number of elements
+# across all lists and k is the size of the intersection (for sorting).
+# Space Complexity: O(U), where U is the number of unique values across all lists.

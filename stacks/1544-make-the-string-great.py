@@ -55,6 +55,11 @@ class Solution:
         return "".join(stack)
 
 
+# Explanation:
+# - Use a stack to keep characters that are part of the current good string.
+# - Adjacent letters that differ only by case have an ASCII gap of 32, so pop them.
+# - The remaining stack forms the final good string.
+
 # Complexity Analysis:
 # Time complexity: O(n), where n is the length of the string s. We traverse the
 # string once, and each character is pushed and popped from the stack at most

@@ -39,6 +39,11 @@ class Solution:
         return answer
 
 
+# Explanation:
+# - Maintain a decreasing stack of indices for unresolved temperatures.
+# - When a warmer day appears, pop indices and compute the waiting days.
+# - Unresolved indices keep 0 in the answer by default.
+
 # Complexity Analysis
 # Time complexity : O(N) - Each element is pushed and popped at most once from
 # the stack.

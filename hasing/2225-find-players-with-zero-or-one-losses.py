@@ -52,10 +52,14 @@ class Solution:
         return [sorted(won_all), sorted(lost_one)]
 
 
+# Explanation:
+# - Track each player's loss count while iterating through matches.
+# - Winners get a loss count initialized to 0, losers get incremented.
+# - Collect players with 0 and 1 losses, then sort each list.
+
 # Complexity Analysis
-# Time Complexity: O(N log N), where N is the number of unique players. For each
-# match, we perform O(1) operations to update the loss count in the dictionary.
-# After processing all matches, we sort the lists of players who have won all,
-# which is O(N log N) in the worst case.
+# Time Complexity: O(M + N log N), where M is the number of matches and N is the
+# number of unique players. We process all matches once and then sort the
+# result lists.
 # Space Complexity: O(N), where N is the number of unique players. We use a
 # dictionary to store the loss counts for each player.

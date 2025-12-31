@@ -45,6 +45,11 @@ class Solution:
         return -1
 
 
+# Explanation:
+# - Maintain left and right bounds of the sorted array.
+# - Check the middle element and discard half the search space each step.
+# - Return the index when found; otherwise return -1.
+
 # Complexity Analysis:
 # Time Complexity: O(log N), where N is the length of nums.
 # We halve the search space at each step of the binary search, leading to a

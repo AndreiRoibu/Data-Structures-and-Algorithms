@@ -32,6 +32,11 @@ class Solution:
         return min(counts["b"], counts["a"], counts["n"], counts["l"] // 2, counts["o"] // 2)
 
 
+# Explanation:
+# - Count the frequency of each character in the text.
+# - The word "balloon" needs one b, a, n, and two l's and o's.
+# - The maximum number formed is the minimum across these adjusted counts.
+
 # Complexity Analysis:
 # Time Complexity: O(n), where n is the length of the input string text.
 # We traverse the string once to count the occurrences of each character.

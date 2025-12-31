@@ -41,5 +41,11 @@ class Solution:
         return res
 
 
+# Explanation:
+# - Use two pointers at the ends because the largest square comes from the
+#   largest absolute value.
+# - Place the larger square at the end of the result array and move inward.
+# - Fill the result from right to left in a single pass.
+
 # Time complexity: O(n) - we traverse the input array once
 # Space complexity: O(n) - we create an output array of the same size as the input array

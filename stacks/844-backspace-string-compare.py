@@ -45,6 +45,10 @@ class Solution:
         return build_string(s) == build_string(t)
 
 
+# Explanation:
+# - Simulate typing with a stack, using "#" to pop when possible.
+# - Build the final strings for s and t and compare them.
+
 # Complexity Analysis
 # Time Complexity: O(n + m), where n and m are the lengths of strings s and t
 # respectively.

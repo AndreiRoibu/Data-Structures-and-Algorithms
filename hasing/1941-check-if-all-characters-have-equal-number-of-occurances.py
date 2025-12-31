@@ -33,6 +33,10 @@ class Solution:
         return len(set(counts.values())) == 1
 
 
+# Explanation:
+# - Count the occurrences of each character.
+# - If all frequencies are the same, the set of counts has size 1.
+
 # Complexity Analysis
 # Time complexity: O(n), where n is the length of the string s. We traverse the
 # string once to count the occurrences of each character and then again to check

@@ -44,6 +44,10 @@ class Solution:
         return None
 
 
+# Explanation:
+# - Keep a set of seen letters as we scan left to right.
+# - The first letter that is already in the set is the first to appear twice.
+
 # Complexity:
 # Time: O(n): We traverse the string containing n characters only once. Each
 #       lookup in the set costs only O(1) time.

@@ -41,6 +41,11 @@ class Solution:
                 seen_dct[x] = idx
 
 
+# Explanation:
+# - Scan the array once while storing each value's index in a hash map.
+# - For each value x, compute the needed complement y = target - x.
+# - If y was seen earlier, return the two indices; otherwise record x.
+
 # Complexity:
 # Time: O(n): We traverse the list containing n elements only once. Each lookup
 #       in the table costs only O(1) time.

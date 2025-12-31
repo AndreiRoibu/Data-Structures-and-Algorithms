@@ -41,6 +41,11 @@ class Solution:
         return answer
 
 
+# Explanation:
+# - Use a sliding window with left index i and a map of last seen positions.
+# - When a character repeats, move i just past its previous occurrence.
+# - Track the maximum window length as we scan.
+
 # Complexity Analysis:
 # Time Complexity: O(N), where N is the length of the input string s. We
 # traverse the string once.

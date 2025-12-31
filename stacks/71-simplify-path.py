@@ -93,6 +93,11 @@ class Solution:
         return "/" + "/".join(stack)
 
 
+# Explanation:
+# - Split the path by "/" and process each segment.
+# - Ignore "" and ".", pop for "..", and push valid names.
+# - Join the stack with "/" to form the canonical path.
+
 # Complexity Analysis
 # Time Complexity: O(n), where n is the length of the input path.
 # Space Complexity: O(n) in the worst case, when all the directories are valid

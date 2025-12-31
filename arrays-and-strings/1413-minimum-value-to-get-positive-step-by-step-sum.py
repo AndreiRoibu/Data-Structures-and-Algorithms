@@ -46,6 +46,11 @@ class Solution:
             return 1 - min_nums
 
 
+# Explanation:
+# - Build prefix sums in-place and track the minimum prefix sum seen.
+# - The smallest prefix must be at least 1, so we need startValue + min_prefix >= 1.
+# - If min_prefix is already >= 1, answer is 1; otherwise return 1 - min_prefix.
+
 # Complexity Analysis
 # - Time complexity: O(n), where n is the length of nums. This is because we are
 # iterating through the array once to compute the prefix sums and track the

@@ -54,6 +54,11 @@ class Solution:
         return answer
 
 
+# Explanation:
+# - Count each row tuple and each column tuple.
+# - For each unique tuple, multiply row count by column count.
+# - Sum these products to get total equal row/column pairs.
+
 # Complexity Analysis:
 # Time Complexity: O(N^2), where N is the number of rows (or columns) in the grid.
 # This is because we iterate through each row and each column of the grid
@@ -80,3 +85,8 @@ class Solution2:
             answer += dct_rows[elem] * dct_cols[elem]
 
         return answer
+
+
+# Explanation:
+# - Build row tuples and column tuples using pure Python lists.
+# - Count frequencies and sum row_count * col_count for each tuple.

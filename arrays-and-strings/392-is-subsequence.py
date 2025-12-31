@@ -41,6 +41,11 @@ class Solution:  # pyright: ignore[reportRedeclaration]
         return i == len(s)
 
 
+# Explanation:
+# - Use two pointers to walk through s and t in order.
+# - When characters match, advance the s pointer; always advance the t pointer.
+# - If we consume all of s, then s is a subsequence of t.
+
 # Complexity Analysis
 # Time complexity: O(n), where n is the length of t. In the worst case, we
 # might have to iterate through all characters of t.
@@ -69,7 +74,11 @@ class Solution:  # noqa: F811
         return True
 
 
+# Explanation:
+# - Precompute sorted index lists for each character in t.
+# - For each character in s, binary search for the next index greater than the previous match.
+# - If any character cannot be placed in order, s is not a subsequence.
+
 # Complexity Analysis
-# Time complexity: O(m log n), where m is the length of s and n is the length of t.
-# Space complexity: O(n), as we are storing the indices of each character in t.
+# Time complexity: O(n + m log n), where n is the length of t and m is the length of s.
 # Space complexity: O(n), as we are storing the indices of each character in t.

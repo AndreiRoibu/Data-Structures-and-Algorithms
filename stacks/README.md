@@ -199,7 +199,7 @@ for num in nums:
 
 As we discussed earlier in the sliding window chapter, despite the nested loop, the time complexity is still O(n), where n is the length of the array, because the inner while loop can only iterate over each element once across all for loop iterations, making the for loop iterations amortized O(1).
 
-Monotonic stacks and queues are useful in problems that, for each element, involves finding the "next" element based on some criteria, for example, the next greater element. They're also good when you have a dynamic window of elements and you want to maintain knowledge of the maximum or minimum element as the window changes. In more advanced problems, sometimes a monotonic stack or queue is only one part of the algorithm. Let's look at some examples.
+Monotonic stacks and queues are useful in problems that, for each element, involves finding the "next" element based on some criteria, for example, **the next greater element**. They're also good when you have a **dynamic window** of elements and you want to **maintain knowledge of the maximum or minimum element as the window changes**. In more advanced problems, sometimes a monotonic stack or queue is only one part of the algorithm. Let's look at some examples.
 
 ## 4.1. Example 1 - Daily Temperatures
 

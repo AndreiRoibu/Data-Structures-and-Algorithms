@@ -1,0 +1,5 @@
+For my solution, please return a copy-paste which:
+- Keeps my current implementation and variable names
+- Is extensively commented and includes Google-style docstrings, which give a summary explainer for my future reference, + give the time and space complexity analysis, + a short explainer.
+
+Separately, please let me know if this solution can be further improved.
